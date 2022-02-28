@@ -1,7 +1,9 @@
 package com.github.travelervihaan.hogwarts.noticeboard.announcements;
 
+import com.github.travelervihaan.hogwarts.noticeboard.reaction.Response;
+
 import java.time.LocalDateTime;
-import java.util.Objects;
+import java.util.*;
 
 public class Announcement {
 
@@ -9,14 +11,17 @@ public class Announcement {
     private final LocalDateTime lastEdit;
     private final String title;
     private final String text;
+    private final List<Response> responses;
 
     private final long authorId;
 
-    public Announcement(LocalDateTime dateAdded, LocalDateTime lastEdit, String title, String text, long authorId) {
+    public Announcement(LocalDateTime dateAdded, LocalDateTime lastEdit, String title,
+                        String text, List<Response> responses, long authorId) {
         this.dateAdded = dateAdded;
         this.lastEdit = lastEdit;
         this.title = title;
         this.text = text;
+        this.responses = responses;
         this.authorId = authorId;
     }
 
@@ -38,6 +43,10 @@ public class Announcement {
 
     public long getAuthorId() {
         return authorId;
+    }
+
+    public List<Response> getResponses() {
+        return responses;
     }
 
     @Override
